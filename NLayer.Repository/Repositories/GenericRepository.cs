@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Core.Repository;
-using NLayer.Repository.Context;
 
 namespace NLayer.Repository.Repositories
 {

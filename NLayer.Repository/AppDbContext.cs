@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NLayer.Core.Entity;
 
-namespace NLayer.Repository.Context
+namespace NLayer.Repository
 {
     public class AppDbContext : DbContext
     {

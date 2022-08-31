@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLayer.Core.UnitOfWorks;
-using NLayer.Repository.Context;
 
 namespace NLayer.Repository.UnitOfWorks
 {

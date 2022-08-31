@@ -90,14 +90,14 @@ namespace NLayer.Repository.Migrations
                 columns: new[] { "Id", "CategoryId", "CreatedDate", "Name", "Price", "Stock", "UpdatedDate" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5274), "Kurşun Kalem", 100m, 100, null },
-                    { 2, 1, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5288), "Tükenmez Kalem", 200m, 200, null },
-                    { 3, 1, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5290), "Dolma Kalem", 300m, 300, null },
-                    { 4, 3, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5292), "Çizgili Defter", 100m, 100, null },
-                    { 5, 3, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5293), "Kareli Defter", 200m, 200, null },
-                    { 6, 3, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5294), "Resim Defteri", 300m, 300, null },
-                    { 7, 2, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5296), "Tarih Kitabı", 100m, 100, null },
-                    { 8, 2, new DateTime(2022, 8, 29, 13, 23, 35, 385, DateTimeKind.Local).AddTicks(5297), "Ders Kitabı", 200m, 200, null }
+                    { 1, 1, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4265), "Kurşun Kalem", 100m, 100, null },
+                    { 2, 1, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4283), "Tükenmez Kalem", 200m, 200, null },
+                    { 3, 1, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4285), "Dolma Kalem", 300m, 300, null },
+                    { 4, 3, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4286), "Çizgili Defter", 100m, 100, null },
+                    { 5, 3, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4287), "Kareli Defter", 200m, 200, null },
+                    { 6, 3, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4289), "Resim Defteri", 300m, 300, null },
+                    { 7, 2, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4290), "Tarih Kitabı", 100m, 100, null },
+                    { 8, 2, new DateTime(2022, 8, 31, 12, 5, 5, 462, DateTimeKind.Local).AddTicks(4291), "Ders Kitabı", 200m, 200, null }
                 });
 
             migrationBuilder.InsertData(

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NLayer.Core.Repository;
 using NLayer.Core.Service;
 using NLayer.Core.UnitOfWorks;
-using NLayer.Repository.Context;
+using NLayer.Repository;
 using NLayer.Repository.Repositories;
 using NLayer.Repository.UnitOfWorks;
 using NLayer.Service.Mapping;
