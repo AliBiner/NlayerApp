@@ -4,24 +4,34 @@ using Microsoft.AspNetCore.Mvc;
 using NLayer.Core.DTOs;
 using NLayer.Core.Entity;
 using NLayer.Core.Service;
+using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers
 {
-    [Route("v1/api/[controller]")]
+    [Route("v1/api/[controller]/")]
     [ApiController]
     public class ProductController : CustomBaseController
     {
         private readonly IMapper _mapper;
         private readonly IService<Product> _service;
+        private readonly IProductService _productService;
 
-        public ProductController(IMapper mapper, IService<Product> service)
+        public ProductController(IMapper mapper, IService<Product> service, IProductService productService)
         {
             _mapper = mapper;
             _service = service;
+            _productService = productService;
         }
 
-        [HttpGet("/GetAllProducts")]
-        public async Task<IActionResult> GetAllProducts()
+        [HttpGet("ProductsWithCategory")]
+        public async Task<IActionResult> GetProductsWithCategory()
+        {
+            var productWithCategory = await _productService.GetProductsWithCategory();
+            return CreateActionResult(productWithCategory);
+        }
+
+        [HttpGet("Products")]
+        public async Task<IActionResult> GetProducts()
         {
             var products = await _service.GetAllAsyncTask();
             var productsDtos = _mapper.Map<List<ProductDto>>(products.ToList());
@@ -29,36 +39,37 @@ namespace NLayer.API.Controllers
         }
 
         
-        [HttpGet("/GetByIdProdcut")]
-        public async Task<IActionResult> GetByIdProduct(int id)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProductById(int id)
         {
             var product = await _service.GetByIdAsyncTask(id);
             var productsDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(200, productsDto));
         }
 
-        [HttpPost("/CreateProduct")]
-        public async Task<IActionResult> CreateProduct(ProductDto productDto)
+        [HttpPost("Create")]
+        public async Task<IActionResult> ProductCreate(ProductDto productDto)
         {
             var product = await _service.AddAsyncTask(_mapper.Map<Product>(productDto));
             var productsDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(201,productsDto));
         }
 
-        [HttpPut("/UpdateProduct")]
-        public async Task<IActionResult> UpdateProduct(ProductUpdateDto productUpdateDto)
+        [HttpPut("Update")]
+        public async Task<IActionResult> ProductUpdate(ProductUpdateDto productUpdateDto)
         {
             await _service.UpdateAsyncTask(_mapper.Map<Product>(productUpdateDto));
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
-        [HttpDelete("/DeleteByIdProduct")]
-        public async Task<IActionResult> DeleteByIdProduct(int id)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProductById(int id)
         {
             var product = await _service.GetByIdAsyncTask(id);
             await _service.RemoveAsyncTask(product);
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(200));
         }
+        
 
 
     }
