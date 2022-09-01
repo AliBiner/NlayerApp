@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NLayer.Core.Repository;
 using NLayer.Core.Service;
 using NLayer.Core.UnitOfWorks;
+using NLayer.Service.Exceptions;
 
 namespace NLayer.Service.Services
 {
@@ -51,7 +52,13 @@ namespace NLayer.Service.Services
 
         public async Task<T> GetByIdAsyncTask(int id)
         {
-            return await _repository.GetByIdAsyncTask(id);
+            var hasProduct = await _repository.GetByIdAsyncTask(id);
+            if (hasProduct is null)
+            {
+                throw new NotFoundException($"{typeof(T).Name}({id}) not found");
+            }
+
+            return hasProduct;
         }
 
         public async Task RemoveAsyncTask(T entity)
