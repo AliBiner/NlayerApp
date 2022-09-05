@@ -9,7 +9,7 @@ using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers
 {
-    [ServiceFilter(typeof(NotFoundFilter<Product>))]
+    
 
     public class ProductController : CustomBaseController
     {
@@ -37,7 +37,7 @@ namespace NLayer.API.Controllers
             return CreateActionResult(CustomResponseDto<List<ProductDto>>.Success(200, productsDtos));
         }
 
-        
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProductById(int id)
         {
@@ -61,6 +61,7 @@ namespace NLayer.API.Controllers
             return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
+        [ServiceFilter(typeof(NotFoundFilter<Product>))]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductById(int id)
         {
