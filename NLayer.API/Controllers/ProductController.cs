@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NLayer.API.Filters;
 using NLayer.Core.DTOs;
 using NLayer.Core.Entity;
 using NLayer.Core.Service;
@@ -8,7 +9,8 @@ using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers
 {
-    
+    [ServiceFilter(typeof(NotFoundFilter<Product>))]
+
     public class ProductController : CustomBaseController
     {
         private readonly IMapper _mapper;
